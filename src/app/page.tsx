@@ -6,11 +6,13 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Form,
+  Input,
 } from '@nextui-org/react'
 import { useMemo, useState } from 'react'
-import type { Selection } from '@nextui-org/react'
-import { Input } from '@nextui-org/input'
 import { SearchIcon } from '@nextui-org/shared-icons'
+import type { Selection } from '@nextui-org/react'
+import BookList from '@/components/BookList'
 
 export default function Home() {
   const [selectedOptions, setSelectedOptions] = useState<Selection>(
@@ -58,6 +60,8 @@ export default function Home() {
           }}
         />
       </div>
-    </div>
+  <BookList />
+
+</div>
   )
 }
