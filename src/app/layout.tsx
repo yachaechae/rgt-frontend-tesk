@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import { NextProviders, ReactQueryProvider } from '@/app/providers'
-import ThemeToggle from '@/component/ThemeSwitcher'
+import ThemeToggle from '@/components/ThemeSwitcher'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -25,7 +25,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang='ko'>
-      <body className={`h-screen`}>
+      <body className={`min-h-screen`}>
         <ReactQueryProvider>
           <NextProviders>
             <header className={`flex justify-end p-2`}>
