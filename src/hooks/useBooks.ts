@@ -1,11 +1,11 @@
 import { BooksResponse } from '@/type'
 import { useQuery } from '@tanstack/react-query'
-import { GetBooks } from '@/api/getBooks'
+import { getBooks } from '@/api/getBooks'
 
 export const useBooks = () => {
-  const query = useQuery<BooksResponse, Error>({
+  const query = useQuery({
     queryKey: ['books'],
-    queryFn: GetBooks,
+    queryFn: () => getBooks(),
     staleTime: 1000 * 60,
     refetchOnWindowFocus: false,
   })

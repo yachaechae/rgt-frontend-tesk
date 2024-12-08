@@ -10,10 +10,9 @@ export default function BookList() {
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Error: {error?.message}</div>
-  if (!data || !data.items || data.items.length === 0)
-    return <div>No books available</div>
+  if (!data || data.length === 0) return <div> 책이 존재하지 않습니다. </div>
 
-  const books = Object.entries(data.items)
+  const books = Object.entries(data)
   const totalPages = Math.ceil(books.length / pageSize)
 
   const currentBooks = books.slice(
@@ -25,33 +24,17 @@ export default function BookList() {
       <ul className={`w-3/4 flex flex-col gap-4`}>
         {currentBooks.map(([key, book]) => (
           <li className={`flex gap-4`} key={key}>
-            {book.volumeInfo.imageLinks?.thumbnail && (
-              <img
-                src={book.volumeInfo.imageLinks.thumbnail}
-                alt={`${book.volumeInfo.title} thumbnail`}
-              />
+            {book.imageLinks && (
+              <img src={book.imageLinks} alt={`${book.title}`} />
             )}
             <div className={`flex flex-col gap-2`}>
               <h2 className={`w-[60vw] text-xl font-bold truncate`}>
-                {book.volumeInfo.title}
+                {book.title}
               </h2>
-              {book.volumeInfo.authors && (
-                <p>저자: {book.volumeInfo.authors.join(', ')}</p>
-              )}
-              {book.volumeInfo.publishedDate && (
-                <p>출판일: {book.volumeInfo.publishedDate}</p>
-              )}
-              {book.saleInfo.listPrice && (
-                <p>
-                  가격: {book.saleInfo.listPrice.amount}{' '}
-                  {book.saleInfo.listPrice.currencyCode}
-                </p>
-              )}
-              <a
-                href={book.volumeInfo.infoLink}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              {book.author && <p>저자: {book.author}</p>}
+              {book.publishedDate && <p>출판일: {book.publishedDate}</p>}
+              {book.saleInfo && <p>가격: {book.saleInfo} </p>}
+              <a href={book.infoLink} target='_blank' rel='noopener noreferrer'>
                 More Info
               </a>
             </div>
