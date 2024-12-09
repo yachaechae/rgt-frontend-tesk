@@ -1,67 +1,54 @@
 'use client'
 
+import React, { useState } from 'react'
 import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
   Form,
+  Button,
   Input,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
 } from '@nextui-org/react'
-import { useMemo, useState } from 'react'
-import { SearchIcon } from '@nextui-org/shared-icons'
-import type { Selection } from '@nextui-org/react'
 import BookList from '@/components/BookList'
+import { SearchIcon } from '@nextui-org/shared-icons'
 
 export default function Home() {
-  const [selectedOptions, setSelectedOptions] = useState<Selection>(
-    new Set(['선택']),
-  )
-  const [searchValue, setSearchValue] = useState<string>('')
+  const [searchField, setSearchField] = useState('제목')
+  const [searchValue, setSearchValue] = useState('')
 
-  const selectedValue = useMemo(
-    () => Array.from(selectedOptions).join(', ').replace(/_/g, ''),
-    [selectedOptions],
-  )
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSearchField(searchField)
+    setSearchValue(searchValue)
+  }
 
   return (
-    <div className='flex flex-col items-center justify-center gap-4'>
-      <h1 className='text-2xl font-bold'>Book List</h1>
-      <div className='flex flex-row items-center justify-center'>
+    <div className='flex flex-col items-center gap-4'>
+      <h1 className='text-2xl font-bold'>Book Search</h1>
+      <Form onSubmit={handleSubmit} className='flex flex-row gap-2'>
         <Dropdown>
           <DropdownTrigger>
-            <Button className='capitalize' variant='bordered'>
-              {selectedValue}
-            </Button>
+            <Button variant='bordered'>{searchField}</Button>
           </DropdownTrigger>
           <DropdownMenu
             disallowEmptySelection
-            className={`flex-col`}
-            selectedKeys={selectedOptions}
             selectionMode='single'
-            variant='solid'
-            onSelectionChange={setSelectedOptions}
+            onSelectionChange={(key) => setSearchField(key as string)}
           >
             <DropdownItem key='제목'>제목</DropdownItem>
             <DropdownItem key='저자'>저자</DropdownItem>
           </DropdownMenu>
         </Dropdown>
         <Input
-          endContent={
-            <SearchIcon className='text-2xl text-default-400 pointer-events-none flex-shrink-0' />
-          }
-          labelPlacement='outside'
-          placeholder='검색어를 입력해주세요'
           type='text'
+          placeholder='검색어를 입력하세요'
           value={searchValue}
-          onChange={(e) => {
-            setSearchValue(e.target.value as string)
-          }}
+          onChange={(e) => setSearchValue(e.target.value)}
+          endContent={<SearchIcon />}
         />
-      </div>
-  <BookList />
-
-</div>
+      </Form>
+      <BookList searchField={searchField} searchValue={searchValue} />
+    </div>
   )
 }
