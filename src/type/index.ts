@@ -1,8 +1,5 @@
-export interface SearchInfo {
-  textSnippet: string
-}
-
 export interface BooksResponse {
+  id: number
   title: string
   author: string
   description: string
@@ -12,4 +9,9 @@ export interface BooksResponse {
   language: string
   publishedDate: string
   saleInfo?: string
+}
+
+export interface BookListProps {
+  searchField: string
+  searchValue: string
 }
