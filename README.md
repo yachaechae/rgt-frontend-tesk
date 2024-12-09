@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+안녕하세요 지원자 임세현 입니다.
 
-## Getting Started
+`https://rgt-frontend-tesk-git-main-yachaechaes-projects.vercel.app/`
 
-First, run the development server:
+해당 url 을 통해서 과제 확인하실수 있습니다!
 
 ```bash
-npm run dev
-# or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+## 사용 기술 스택
+`TypeSrcript`,`Next.js`, `NextUI`, `supabase`, `TailwindCSS`, `tanstack/react-query`, `vercel`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 과정
+`firebase`만으로도 배열내에 검색이 가능할거라 판단하여 `firebase`를 채용하여 작업했으나 배열내에 검색이 불가능 하다는 것을 확인 한 후 `supabase`를 사용하여 작업하게되었습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+처음 방향성을 제대로 잡지 못하여 작업 시간을 허튼곳에 소비하게됐습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+api 구현은 `supabase`를 통해 작업 했지만 책 추가 / 삭제 부분은 화면에 그려내지 못했습니다.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+배포는 `vercel`을 사용하여 배포했습니다.
