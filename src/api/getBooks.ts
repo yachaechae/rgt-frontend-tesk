@@ -1,4 +1,3 @@
-import { BooksResponse } from '@/type'
 import { supabase } from '@/supabase'
 
 export async function getBooks() {

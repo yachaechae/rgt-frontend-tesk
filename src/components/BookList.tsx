@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Pagination } from '@nextui-org/react'
 import { useBooks } from '@/hooks/useBooks'
 import { BookListProps, BooksResponse } from '@/type'
+import Image from 'next/image'
 
 export default function BookList({ searchField, searchValue }: BookListProps) {
   const { books, isLoading, isError, error } = useBooks(
@@ -31,7 +32,12 @@ export default function BookList({ searchField, searchValue }: BookListProps) {
             <Link href={`/${book.id}`} key={book.id} passHref>
               <li className={`flex gap-4`}>
                 {book.imageLinks && (
-                  <img src={book.imageLinks} alt={`${book.title}`} />
+                  <Image
+                    width={200}
+                    height={200}
+                    src={book.imageLinks}
+                    alt={`${book.title}`}
+                  />
                 )}
                 <div className={`flex flex-col gap-2`}>
                   <h2 className={`w-[60vw] text-xl font-bold truncate`}>
