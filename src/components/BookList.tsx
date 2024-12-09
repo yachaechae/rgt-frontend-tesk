@@ -28,8 +28,8 @@ export default function BookList({ searchField, searchValue }: BookListProps) {
       <div className='flex flex-col items-center gap-4'>
         <ul className={`w-3/4 flex flex-col gap-4`}>
           {currentBooks.map((book: BooksResponse) => (
-            <Link href={`/${book.id}`} passHref>
-              <li className={`flex gap-4`} key={book.id}>
+            <Link href={`/${book.id}`} key={book.id} passHref>
+              <li className={`flex gap-4`}>
                 {book.imageLinks && (
                   <img src={book.imageLinks} alt={`${book.title}`} />
                 )}
